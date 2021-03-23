@@ -13,6 +13,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/articles/new' do
+    @article = Article.new
     erb :new
   end
  
@@ -47,7 +48,7 @@ class ApplicationController < Sinatra::Base
   delete '/articles/:id/delete' do 
   	@article = Article.find(params[:id])
     @article.delete
-    erb :show
+    redirect to "/articles/"
   end
  
 
